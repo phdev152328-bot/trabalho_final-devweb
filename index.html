@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#142a45">
+  <meta name="description" content="Organizaê: um jeito simples de planejar e acompanhar suas tarefas de estudo.">
+  <title>Organizaê — tarefas em ordem</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/app.js" defer></script>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="index.html" aria-label="Organizaê, início">
+        <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>
+        <span>organiza<span class="brand-accent">ê</span></span>
+      </a>
+      <p class="topbar-note">Seu espaço para colocar os estudos em dia.</p>
+    </header>
+
+    <main class="main-content">
+      <section class="intro" aria-labelledby="page-title">
+        <div class="intro-copy">
+          <p class="eyebrow">UM PASSO DE CADA VEZ</p>
+          <h1 id="page-title">Ideias em ordem.<br><span>Dia mais leve.</span></h1>
+          <p class="intro-text">Anote o que precisa fazer e acompanhe seu ritmo, sem complicação.</p>
+        </div>
+        <div class="date-note" aria-label="Data de hoje">
+          <span class="date-icon" aria-hidden="true">✳</span>
+          <span id="today-date"></span>
+        </div>
+      </section>
+
+      <section class="overview" aria-label="Resumo das tarefas">
+        <div class="overview-heading">
+          <h2>Seu progresso</h2>
+          <span id="progress-caption">Tudo começa com uma tarefa.</span>
+        </div>
+        <div class="stats">
+          <div class="stat stat-total"><span class="stat-number" id="total-count">0</span><span class="stat-label">no total</span></div>
+          <div class="stat"><span class="stat-number" id="pending-count">0</span><span class="stat-label">a fazer</span></div>
+          <div class="stat"><span class="stat-number" id="done-count">0</span><span class="stat-label">concluídas</span></div>
+          <div class="progress-track" role="progressbar" aria-label="Tarefas concluídas" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="progress-bar"><span id="progress-fill"></span></div>
+        </div>
+      </section>
+
+      <section class="workspace" aria-label="Gerenciador de tarefas">
+        <div class="task-panel">
+          <div class="panel-heading">
+            <div>
+              <h2>Minhas tarefas</h2>
+              <p>Uma lista clara já ajuda a começar.</p>
+            </div>
+            <span class="list-spark" aria-hidden="true">✳</span>
+          </div>
+
+          <form class="task-form" id="task-form">
+            <label class="sr-only" for="task-title">Nome da tarefa</label>
+            <input id="task-title" name="title" type="text" maxlength="100" placeholder="Ex.: revisar anotações de biologia" autocomplete="off" required>
+            <div class="form-options">
+              <div class="field-group">
+                <label for="task-subject">Matéria <span>(opcional)</span></label>
+                <input id="task-subject" name="subject" type="text" maxlength="40" placeholder="Ex.: Biologia">
+              </div>
+              <div class="field-group">
+                <label for="task-date">Prazo <span>(opcional)</span></label>
+                <input id="task-date" name="dueDate" type="date">
+              </div>
+              <button class="add-button" type="submit"><span aria-hidden="true">＋</span> Adicionar tarefa</button>
+            </div>
+          </form>
+
+          <div class="list-toolbar">
+            <div class="filter-tabs" role="group" aria-label="Filtrar tarefas">
+              <button class="filter-button is-active" type="button" data-filter="all" aria-pressed="true">Todas <span id="filter-all-count">0</span></button>
+              <button class="filter-button" type="button" data-filter="pending" aria-pressed="false">A fazer <span id="filter-pending-count">0</span></button>
+              <button class="filter-button" type="button" data-filter="completed" aria-pressed="false">Concluídas <span id="filter-completed-count">0</span></button>
+            </div>
+            <label class="search-field">
+              <span class="sr-only">Buscar tarefas</span>
+              <span aria-hidden="true">⌕</span>
+              <input id="task-search" type="search" placeholder="Buscar tarefa" autocomplete="off">
+            </label>
+          </div>
+
+          <div class="task-list" id="task-list" aria-live="polite" aria-relevant="additions removals text"></div>
+          <div class="empty-state" id="empty-state">
+            <span class="empty-mark" aria-hidden="true">✓</span>
+            <h3 id="empty-title">Sua lista começa aqui</h3>
+            <p id="empty-description">Escreva uma tarefa acima e deixe o próximo passo mais claro.</p>
+          </div>
+          <p class="storage-note"><span aria-hidden="true">◉</span> Suas tarefas ficam salvas neste dispositivo.</p>
+        </div>
+      </section>
+    </main>
+    <footer class="footer"><span>Feito para estudar com mais tranquilidade.</span><span>Organizaê <span id="current-year"></span></span></footer>
+  </div>
+
+  <dialog class="edit-dialog" id="edit-dialog" aria-labelledby="edit-title">
+    <form id="edit-form" class="edit-form">
+      <div class="dialog-heading">
+        <div><p class="eyebrow">AJUSTAR TAREFA</p><h2 id="edit-title">Editar tarefa</h2></div>
+        <button class="icon-button close-dialog" type="button" aria-label="Fechar edição">×</button>
+      </div>
+      <input type="hidden" id="edit-id">
+      <label for="edit-task-title">Tarefa</label>
+      <input id="edit-task-title" name="title" type="text" maxlength="100" required>
+      <div class="dialog-fields">
+        <div class="field-group"><label for="edit-task-subject">Matéria <span>(opcional)</span></label><input id="edit-task-subject" name="subject" type="text" maxlength="40"></div>
+        <div class="field-group"><label for="edit-task-date">Prazo <span>(opcional)</span></label><input id="edit-task-date" name="dueDate" type="date"></div>
+      </div>
+      <div class="dialog-actions"><button class="cancel-button close-dialog" type="button">Cancelar</button><button class="add-button" type="submit">Salvar alterações</button></div>
+    </form>
+  </dialog>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
