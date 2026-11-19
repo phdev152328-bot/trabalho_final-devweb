@@ -2,7 +2,7 @@
 
 Aplicação web para organizar tarefas de estudo diretamente no navegador. O projeto usa HTML5, CSS3 e JavaScript puro, sem frameworks ou bibliotecas externas.
 
-**Aplicação publicada:** `https://SEU-USUARIO.github.io/NOME-DO-REPOSITORIO/`  
+**Aplicação publicada:** `https://phdev152328-bot.github.io/trabalho_final-devweb/`  
 > Depois de criar o repositório público e ativar o GitHub Pages, substitua o endereço acima pelo link real.
 
 ## Funcionalidades do software
