@@ -232,7 +232,7 @@
   }
 
   function createTaskElement(task) {
-    const item = document.createElement("article");
+    const item = document.createElement("li");
     item.className = `task-item${task.completed ? " is-completed" : ""}`;
     item.dataset.taskId = task.id;
 
