@@ -1,10 +1,19 @@
-/* Organizaê — funcionalidades em JavaScript puro.
-   As tarefas ficam salvas no localStorage deste navegador. */
-/*Aqui eu tive ajuda da IA para certas duvidas */
+/*
+ * Organizaê — funcionalidades em JavaScript puro.
+ * As tarefas ficam salvas no localStorage deste navegador.
+ * Os comentários explicam o papel de cada parte para facilitar a leitura e a apresentação.
+ */
+/* Aqui eu tive ajuda da IA para esclarecer algumas dúvidas. */
 (() => {
   "use strict";
 
+  // Essa chave identifica os dados do Organizaê no navegador.
+  // Se ela mudar, o navegador vai procurar as tarefas em outro lugar.
   const CHAVE = "organizae.tasks.v1";
+
+  // Guardo aqui os elementos do HTML que o JavaScript precisa atualizar.
+  // Assim evito procurar o mesmo elemento várias vezes no meio do código.
+  // Cada propriedade aponta para um elemento da página para facilitar a atualização.
   const tela = {
     formulario: document.querySelector("#task-form"),
     titulo: document.querySelector("#task-title"),
@@ -45,11 +54,13 @@
 
   // Inicia a página e conecta os controles às suas ações.
   function iniciar() {
+    // Cria a data de hoje formatada em português e mostra o ano.
     const hoje = new Date();
     tela.dataHoje.textContent = new Intl.DateTimeFormat("pt-BR", {
       weekday: "long", day: "numeric", month: "long"
     }).format(hoje);
     tela.ano.textContent = hoje.getFullYear();
+    // Define o campo de prazo como mínima data para o dia de hoje.
     tela.prazo.min = paraDataInput(hoje);
     tela.prazoEdicao.min = tela.prazo.min;
 
