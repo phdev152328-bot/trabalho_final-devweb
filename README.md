@@ -5,7 +5,7 @@ Aplicação web para organizar tarefas de estudo diretamente no navegador. O pro
 **Aplicação publicada:** `https://SEU-USUARIO.github.io/NOME-DO-REPOSITORIO/`  
 > Depois de criar o repositório público e ativar o GitHub Pages, substitua o endereço acima pelo link real.
 
-## Funcionalidades
+## Funcionalidades do software
 
 - Cadastrar tarefas com título, matéria opcional e prazo opcional.
 - Listar, editar, concluir e excluir tarefas.
@@ -19,7 +19,7 @@ Aplicação web para organizar tarefas de estudo diretamente no navegador. O pro
 ## Como executar
 
 1. Baixe ou clone este repositório.
-2. Abra `index.html` em um navegador moderno.
+2. Abra `index.html` em um navegador moderno como chrome ou firefox.
 
 A aplicação não precisa de servidor, instalação de pacotes ou etapa de compilação. Para desenvolvimento, também pode ser aberta com uma extensão de servidor local no editor.
 
@@ -46,6 +46,8 @@ organizae/
 └── LICENSE          # Licença do projeto
 ```
 
+- mencionado no trabalho
+
 ## Decisões de implementação
 
 - As tarefas são mantidas como uma lista de objetos em JavaScript e salvas em `localStorage` após cada alteração. Assim, elas permanecem disponíveis no mesmo navegador e dispositivo.
@@ -53,6 +55,8 @@ organizae/
 - Filtros e busca afetam a lista exibida; os contadores continuam mostrando o total geral por status.
 - O HTML usa regiões e rótulos semânticos, e os controles têm nomes acessíveis para leitores de tela e navegação por teclado.
 - O CSS organiza os componentes por área da interface e inclui ajustes para telas estreitas, foco visível e preferência por movimento reduzido.
+
+- tenha um bom aproveito do software!
 
 ## Publicar no GitHub Pages
 
@@ -64,4 +68,4 @@ organizae/
 
 ## Armazenamento e privacidade
 
-As tarefas ficam apenas no `localStorage` do navegador usado. Elas não são enviadas para um servidor. Limpar os dados do navegador remove as tarefas salvas.
+As tarefas ficam apenas no `localStorage` do navegador usado. Elas não são enviadas para um servidor ou banco de dados. Limpar os dados do navegador remove as tarefas salvas tudo pelo javascript e html.
